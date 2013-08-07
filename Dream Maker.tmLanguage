@@ -7,8 +7,6 @@
 		<string>dm</string>
 		<string>dme</string>
 	</array>
-	<key>firstLineMatch</key>
-	<string>-[*]-( Mode:)? C -[*]-</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
 		 /\*\*(?!\*)
@@ -19,7 +17,7 @@
 	<key>keyEquivalent</key>
 	<string>^~C</string>
 	<key>name</key>
-	<string>C</string>
+	<string>Dream Maker</string>
 	<key>patterns</key>
 	<array>
 		<dict>
