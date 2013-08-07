@@ -27,11 +27,11 @@
 		string
 			double quote
 			single quote
-		number
+		number (all numbers (integers, decimals) should be hilighted. However, in DM the negative symbol in negs is not; things like 1.#INF, where only the 1 is hilighted)
 */
 var
 	global
-		x = 500
+		x = 500  
 	const
 		y = "test string"
 
@@ -94,7 +94,7 @@ proc
 		for(var/x=0; x<100, x++)
 			world << TRUE
 /*
-	for loop with to/step
+	for loop with to/step, step should only be hilighted in the case it's after "for("
 */
 		for(var/x=1 to 10 step 4)
 
@@ -125,4 +125,17 @@ proc
 	return statement
 */
 		return 5
+/*
+	text document syntax
+*/
+        world << {"poop
+        	poop
+        	poop"}
+/*	
+	escaped line end
+*/
+	world << "poop \
+		poop"
+	
+	
 
