@@ -959,7 +959,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>$self</string>
+							<string>#block_innards</string>
 						</dict>
 					</array>
 				</dict>
