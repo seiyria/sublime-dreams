@@ -139,7 +139,7 @@ proc
 	
 /*
 	embedded expressions 
-/*
+*/
 	world << "poop: [x]"
 /*
 	escaped things
