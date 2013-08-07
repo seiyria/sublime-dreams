@@ -137,5 +137,12 @@ proc
 	world << "poop \
 		poop"
 	
-	
-
+/*
+	embedded expressions 
+/*
+	world << "poop: [x]"
+/*
+	escaped things
+*/
+	world << "poop: \[x]" // only first bracket cancels the expression
+	world << "poop \"hi\" " //both quotes have to be escaped
