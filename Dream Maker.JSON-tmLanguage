@@ -3,11 +3,10 @@
         "dm", 
         "dme"
     ], 
-    "firstLineMatch": "-[*]-( Mode:)? C -[*]-", 
     "foldingStartMarker": "(?x)\n\t\t /\\*\\*(?!\\*)\n\t\t|^(?![^{]*?//|[^{]*?/\\*(?!.*?\\*/.*?\\{)).*?\\{\\s*($|//|/\\*(?!.*?\\*/.*\\S))\n\t", 
     "foldingStopMarker": "(?<!\\*)\\*\\*/|^\\s*\\}", 
     "keyEquivalent": "^~C", 
-    "name": "C", 
+    "name": "Dream Maker", 
     "patterns": [
         {
             "include": "#preprocessor-rule-enabled"
