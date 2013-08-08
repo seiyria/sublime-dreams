@@ -64,3 +64,5 @@ expands to:
 for (var i in 1 to count step 2)
 	/* code */
 ```
+
+To make the most of the snippet auto-completion, after the initial tab, keep hitting tab to change positions.
