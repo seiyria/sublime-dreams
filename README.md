@@ -38,7 +38,6 @@ do\<tab>
 expands to:
 ```
 do
-
 	/* code */
 while (/* condition */);
 ```
