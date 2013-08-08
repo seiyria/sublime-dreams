@@ -302,7 +302,7 @@
                         }
                     }, 
                     "match": "^// =(\\s*.*?)\\s*=\\s*$\\n?", 
-                    "name": "comment.line.banner.c++"
+                    "name": "comment.line.banner.dm"
                 }, 
                 {
                     "begin": "//", 
@@ -312,11 +312,11 @@
                         }
                     }, 
                     "end": "$\\n?", 
-                    "name": "comment.line.double-slash.c++", 
+                    "name": "comment.line.double-slash.dm", 
                     "patterns": [
                         {
                             "match": "(?>\\\\\\s*\\n)", 
-                            "name": "punctuation.separator.continuation.c++"
+                            "name": "punctuation.separator.continuation.dm"
                         }
                     ]
                 }
@@ -581,10 +581,6 @@
                     "include": "#block_innards"
                 }
             ]
-        }, 
-        "sizeof": {
-            "match": "\\b(sizeof)\\b", 
-            "name": "keyword.operator.sizeof.dm"
         }, 
         "string_embedded_expression": {
             "patterns": [
