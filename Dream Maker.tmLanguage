@@ -105,7 +105,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#string_placeholder</string>
+					<string>#string_embedded_expression</string>
 				</dict>
 			</array>
 		</dict>
@@ -509,7 +509,7 @@
 					<key>match</key>
 					<string>^// =(\s*.*?)\s*=\s*$\n?</string>
 					<key>name</key>
-					<string>comment.line.banner.c++</string>
+					<string>comment.line.banner.dm</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -525,14 +525,14 @@
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
-					<string>comment.line.double-slash.c++</string>
+					<string>comment.line.double-slash.dm</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
 							<string>(?&gt;\\\s*\n)</string>
 							<key>name</key>
-							<string>punctuation.separator.continuation.c++</string>
+							<string>punctuation.separator.continuation.dm</string>
 						</dict>
 					</array>
 				</dict>
@@ -945,12 +945,26 @@
 				</dict>
 			</array>
 		</dict>
-		<key>sizeof</key>
+		<key>string_embedded_expression</key>
 		<dict>
-			<key>match</key>
-			<string>\b(sizeof)\b</string>
-			<key>name</key>
-			<string>keyword.operator.sizeof.dm</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(?&lt;!\\)\[</string>
+					<key>end</key>
+					<string>\]</string>
+					<key>name</key>
+					<string>string.regexp.dm</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
 		<key>string_escaped_char</key>
 		<dict>
@@ -958,7 +972,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\\(\\|[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})</string>
+					<string>\\(\\|[\[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})</string>
 					<key>name</key>
 					<string>constant.character.escape.dm</string>
 				</dict>
@@ -967,32 +981,6 @@
 					<string>\\.</string>
 					<key>name</key>
 					<string>invalid.illegal.unknown-escape.dm</string>
-				</dict>
-			</array>
-		</dict>
-		<key>string_placeholder</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>(?x)%
-    						(\d+\$)?                             # field (argument #)
-    						[#0\- +']*                           # flags
-    						[,;:_]?                              # separator character (AltiVec)
-    						((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
-    						(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
-    						(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
-    						[diouxXDOUeEfFgGaACcSspn%]           # conversion type
-    					</string>
-					<key>name</key>
-					<string>constant.other.placeholder.dm</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>%</string>
-					<key>name</key>
-					<string>invalid.illegal.placeholder.dm</string>
 				</dict>
 			</array>
 		</dict>

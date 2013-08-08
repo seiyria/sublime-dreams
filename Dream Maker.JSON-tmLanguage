@@ -587,7 +587,7 @@
                 {
                     "begin": "(?<!\\\\)\\[", 
                     "end": "\\]", 
-                    "name": "constant.other.embedded.dm", 
+                    "name": "string.regexp.dm", 
                     "patterns": [
                         {
                             "include": "$self"
