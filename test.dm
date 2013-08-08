@@ -1,6 +1,5 @@
 /*
 	TODO
-		-embedded expressions should highlight the embedded expression as a deeper color
 		-escaped brackets should not be highlit
 		-leftmost expressions (like /datum) that aren't already a keyword
 		-parameter highlighting
