@@ -3,7 +3,6 @@ sublime-dreams
 
 A Sublime Text 2 Theme/Build System for Dream Maker (http://byond.com)
 
-
 Highlighting
 ============
 Currently correctly highlighting:
@@ -15,6 +14,8 @@ Currently correctly highlighting:
 * Built-in functions
 * Language constants
 * Embedded expressions
+
+The theme that works best (according to the few I tried) is Sunburst.
 
 Build System
 ============
