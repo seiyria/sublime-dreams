@@ -58,8 +58,9 @@ datum
 		//is this even allowed in DM?
 		t = 0xBEEFFACE
 		u = 01000
-		y = x ? z
-		test = new list()
+		y = x ? z : POOP
+		z = x > 2 : 1 < 4 
+		test = new list() 
 		obj/cake/pie = new()
 
 	proc

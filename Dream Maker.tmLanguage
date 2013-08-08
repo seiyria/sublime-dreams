@@ -64,6 +64,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>\b( \? | (&gt; | &lt;)(=)? | \. | : | /(=)? | ! | ~ | \+(\+|=)? | -(-|=)? | \*(\*|=)? | % | &gt;&gt; | &lt;&lt; | =(=)? | != || &lt;&gt; | &amp; | &amp;&amp; | \^ | \| | \|\| )\b</string>
+			<key>name</key>
+			<string>keyword.operator.dm</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>\b([A-Z_]+)\b</string>
 			<key>name</key>
 			<string>constant.language.dm</string>

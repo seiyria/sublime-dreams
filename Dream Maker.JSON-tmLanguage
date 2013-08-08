@@ -38,6 +38,10 @@
             "name": "variable.language.dm"
         }, 
         {
+            "match": "\\b( \\? | (> | <)(=)? | \\. | : | /(=)? | ! | ~ | \\+(\\+|=)? | -(-|=)? | \\*(\\*|=)? | % | >> | << | =(=)? | != || <> | & | && | \\^ | \\| | \\|\\| )\\b", 
+            "name": "keyword.operator.dm"
+        }, 
+        {
             "match": "\\b([A-Z_]+)\\b", 
             "name": "constant.language.dm"
         }, 
