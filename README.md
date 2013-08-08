@@ -14,6 +14,7 @@ Currently correctly highlighting:
 * Numeric variables
 * Built-in functions
 * Language constants
+* Embedded expressions
 
 Build System
 ============
