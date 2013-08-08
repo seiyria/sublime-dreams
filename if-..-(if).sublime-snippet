@@ -1,9 +1,9 @@
 <snippet>
 	<description>If Condition</description>
     <content><![CDATA[if (${1:/* condition */})
-{
+
 	${0:/* code */}
-}]]></content>
+]]></content>
     <tabTrigger>if</tabTrigger>
     <scope>source.dm</scope>
 </snippet>
