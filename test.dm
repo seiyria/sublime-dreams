@@ -3,6 +3,7 @@
 		-escaped brackets should not be highlit
 		-leftmost expressions (like /datum) that aren't already a keyword
 		-parameter highlighting
+		-add built-in procs
 */
 
 // this is a test file to make sure the DM syntax is correctly highlighted
