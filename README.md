@@ -14,6 +14,7 @@ Currently correctly highlighting:
 * Built-in functions
 * Language constants
 * Embedded expressions
+* Operators (most themes ignore these)
 
 The theme that works best (according to the few I tried) is Sunburst.
 
