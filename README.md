@@ -6,7 +6,14 @@ A Sublime Text 2 Theme/Build System for Dream Maker (http://byond.com)
 
 Highlighting
 ============
-It highlights a lot of things.
+Currently correctly highlighting:
+* All language keywords
+* Pre-processor macros
+* Strings (single and double quote)
+* Proc names
+* Numeric variables
+* Built-in functions
+* Language constants
 
 Build System
 ============
@@ -17,7 +24,7 @@ Snippet Autocompletion
 
 Currently supported are:
 
-def<tab> 
+def\<tab> 
 expands to:
 
 ```
@@ -26,7 +33,7 @@ expands to:
 #endif
 ```
 
-do<tab>
+do\<tab>
 expands to:
 ```
 do
@@ -35,20 +42,23 @@ do
 while (/* condition */);
 ```
 
-for<tab>
+for\<tab>
 expands to:
 ```
 for (var i = 0; i < count; ++i)
+	/* code */
 ```
 
-forin<tab>
+forin\<tab>
 expands to:
 ```
 for (var i in 1 to count)
+	/* code */
 ```
 
-forinstep<tab>
+forinstep\<tab>
 expands to:
 ```
 for (var i in 1 to count step 2)
+	/* code */
 ```
