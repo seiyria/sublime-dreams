@@ -20,6 +20,10 @@
         }, 
         {
             "include": "#comments"
+        },  
+        {
+            "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b", 
+            "name": "constant.numeric.dm"
         }, 
         {
             "match": "\\b(sleep|spawn|break|continue|do|else|for|goto|if|return|switch|while|del|new|to|in|step)\\b", 
@@ -44,11 +48,7 @@
         {
             "match": "\\b([A-Z_]+)\\b", 
             "name": "constant.language.dm"
-        }, 
-        {
-            "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b", 
-            "name": "constant.numeric.dm"
-        }, 
+        },
         {
             "begin": "\"", 
             "beginCaptures": {
