@@ -36,6 +36,13 @@ expands to:
 #endif
 ```
 
+if\<tab>
+expands to:
+```
+if (/* condition */)
+	/* code */
+```
+
 do\<tab>
 expands to:
 ```
