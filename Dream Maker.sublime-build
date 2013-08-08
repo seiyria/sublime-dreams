@@ -1,0 +1,4 @@
+{
+	"cmd": ["dm.exe", "$file"],
+	"selector": "source.dm"
+}
