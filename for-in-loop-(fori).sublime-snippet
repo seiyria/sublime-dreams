@@ -1,0 +1,9 @@
+<snippet>
+	<description>For-in Loop</description>
+    <content><![CDATA[for (var ${2:i} in 1 to ${1:count})
+
+	${0:/* code */}
+]]></content>
+    <tabTrigger>forin</tabTrigger>
+    <scope>source.dm</scope>
+</snippet>

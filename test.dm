@@ -81,7 +81,10 @@ proc
 		sleep(20);
 /*
 	do/while loop in braces
-*/
+*/		
+		for (var i = 0; i < count; ++i)
+		
+			/* code */
 		do {
 			x++
 		} while(y<100)
