@@ -7,6 +7,8 @@
 		<string>dm</string>
 		<string>dme</string>
 	</array>
+	<key>firstLineMatch</key>
+	<string>-[*]-( Mode:)? C -[*]-</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
 		 /\*\*(?!\*)
@@ -17,7 +19,7 @@
 	<key>keyEquivalent</key>
 	<string>^~C</string>
 	<key>name</key>
-	<string>Dream Maker</string>
+	<string>C</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -44,7 +46,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(var|arg|proc|verb)\b</string>
+			<string>\b(var|arg)\b</string>
 			<key>name</key>
 			<string>storage.type.dm</string>
 		</dict>
@@ -56,7 +58,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(TRUE|FALSE)\b</string>
+			<string>\b(usr|world|src|proc|verb)\b</string>
+			<key>name</key>
+			<string>variable.language.dm</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>\b([A-Z_]+)\b</string>
 			<key>name</key>
 			<string>constant.language.dm</string>
 		</dict>
@@ -97,7 +105,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#string_embedded_expression</string>
+					<string>#string_placeholder</string>
 				</dict>
 			</array>
 		</dict>
@@ -290,7 +298,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(?&lt;=\})|(?=#)|(;)</string>
+			<string>(?&lt;=\})|(?=#)|(;)?</string>
 			<key>name</key>
 			<string>meta.function.dm</string>
 			<key>patterns</key>
@@ -944,34 +952,13 @@
 			<key>name</key>
 			<string>keyword.operator.sizeof.dm</string>
 		</dict>
-		<key>string_embedded_expression</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>(?&lt;!\\)\[</string>
-					<key>end</key>
-					<string>\]</string>
-					<key>name</key>
-					<string>constant.other.embedded.dm</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#block_innards</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
 		<key>string_escaped_char</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\\(\\|[\[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})</string>
+					<string>\\(\\|[abefnprtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2}|u[a-fA-F0-9]{,4}|U[a-fA-F0-9]{,8})</string>
 					<key>name</key>
 					<string>constant.character.escape.dm</string>
 				</dict>
@@ -980,6 +967,32 @@
 					<string>\\.</string>
 					<key>name</key>
 					<string>invalid.illegal.unknown-escape.dm</string>
+				</dict>
+			</array>
+		</dict>
+		<key>string_placeholder</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?x)%
+    						(\d+\$)?                             # field (argument #)
+    						[#0\- +']*                           # flags
+    						[,;:_]?                              # separator character (AltiVec)
+    						((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
+    						(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
+    						(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
+    						[diouxXDOUeEfFgGaACcSspn%]           # conversion type
+    					</string>
+					<key>name</key>
+					<string>constant.other.placeholder.dm</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>%</string>
+					<key>name</key>
+					<string>invalid.illegal.placeholder.dm</string>
 				</dict>
 			</array>
 		</dict>
