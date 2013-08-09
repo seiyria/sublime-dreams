@@ -3,6 +3,6 @@
 		"keys": ["ctrl+r"], "command": "exec", "args": { "cmd": "dreamseeker.exe"}
 	},
 	{
-		"keys": ["ctrl+shift+b"], "command": "exec", "args": { "cmd": "dm.exe"}
+		"keys": ["ctrl+shift+,"], "command": "get_dm_system_data"
 	}
 ]
