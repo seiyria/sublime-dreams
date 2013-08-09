@@ -7,6 +7,10 @@
 		{
 			"name": "Run",
 			"cmd": ["dreamseeker", "$file_path/${file_base_name}.dmb"]
+		},
+		{
+			"name": "Run in Dream Daemon",
+			"cmd": ["dreamdaemon", "$file_path/${file_base_name}.dmb"]
 		}
 	]
 }
