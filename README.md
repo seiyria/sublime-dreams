@@ -20,7 +20,7 @@ The theme that works best (according to the few I tried) is Sunburst.
 
 Build System
 ============
-There is currently no build system in place.
+A build system is included that, at the moment, compiles the currently opened .dm file into a .dmb. It also supports running the .dmb in Dream Seeker, or opening it in Dream Daemon so you can run it from there. It does not support compiling an entire environment yet.
 
 Snippet Autocompletion
 ======================
