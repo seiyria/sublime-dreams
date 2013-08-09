@@ -3,7 +3,6 @@
 		-escaped brackets should not be highlit
 		-leftmost expressions (like /datum) that aren't already a keyword
 		-parameter highlighting
-		-add built-in procs
 */
 
 // this is a test file to make sure the DM syntax is correctly highlighted
@@ -12,7 +11,7 @@
 	this is a multi line comment
 	it has multiple lines
 	it also has some keywords in it like for, to, do
-	and some comment starters! /*
+	and some comment starters!
 */
 
 //warning macro
@@ -57,16 +56,16 @@ top level type definition
 datum
 	var
 		//is this even allowed in DM?
-		t = 0xBEEFFACE
+		//t = 0xBEEFFACE
 		u = 01000
 		y = x ? z : POOP
-		z = x > 2 : 1 < 4 
+		//z = x > 2 : 1 < 4 
 		test = new list() 
 		obj/cake/pie = new()
 
 	proc
 		functionName(x, y, defaultArg = 1) {
-			return 5
+			return abs(-5)
 		}
 
 proc
@@ -75,24 +74,26 @@ proc
 	a proc with braces
 */
 	braced_function() {
+		world << 1
+	}
 
 /*
 	function call with semicolon
 */
+proc
+	test()
 		sleep(20);
 /*
 	do/while loop in braces
 */		
+		var count = 1
 		for (var i = 0; i < count; ++i)
-		
+			world << 1
 			/* code */
 		do {
 			x++
 		} while(y<100)
-	}
-/*
-	blocks are not currently highlit correctly because the regex looks for braces
-*/
+
 	do_a_thing()
 
 /*
@@ -146,6 +147,7 @@ proc
 */
 		sleep(10)
 		spawn(20)
+			world << 1
 
 /*
 	for loop
