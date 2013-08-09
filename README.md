@@ -83,3 +83,4 @@ Potential Future Features
 *  Auto-reboot DreamDaemon on build
 *  Auto-join DreamDaemon as self
 *  Auto-join DreamDaemon with x keys/guests
+*  DMF syntax highlighting
