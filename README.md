@@ -9,7 +9,7 @@ Currently correctly highlighting:
 * All language keywords
 * Pre-processor macros
 * Strings (single and double quote)
-* Proc names
+* Proc names (including built-in procs)
 * Numeric variables
 * Built-in functions
 * Language constants
