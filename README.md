@@ -20,7 +20,7 @@ The theme that works best (according to the few I tried) is Sunburst.
 
 Build System
 ============
-There is currently no build system in place.
+A build system is included that, at the moment, compiles the currently opened .dm file into a .dmb. It also supports running the .dmb in Dream Seeker, or opening it in Dream Daemon so you can run it from there. It does not support compiling an entire environment yet.
 
 Snippet Autocompletion
 ======================
@@ -75,3 +75,11 @@ for (var i in 1 to count step 2)
 To make the most of the snippet auto-completion, after the initial tab, keep hitting tab to change positions.
 
 Got useful snippets? Send a pull request!
+
+Potential Future Features
+=========================
+*  Kill old DreamSeeker before compilation, and run a new DreamSeeker
+*  Auto-run in DreamDaemon hotkey
+*  Auto-reboot DreamDaemon on build
+*  Auto-join DreamDaemon as self
+*  Auto-join DreamDaemon with x keys/guests

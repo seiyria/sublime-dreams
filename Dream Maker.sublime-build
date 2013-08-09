@@ -1,4 +1,16 @@
 {
-	"cmd": ["dm.exe", "$file"],
-	"selector": "source.dm"
+	"cmd": ["dm", "$file"],
+	"selector": "source.dm",
+	"file_regex": "^(..[^:]*):([0-9]+):()(error:.+)$",
+
+	"variants": [
+		{
+			"name": "Run",
+			"cmd": ["dreamseeker", "$file_path/${file_base_name}.dmb"]
+		},
+		{
+			"name": "Run in Dream Daemon",
+			"cmd": ["dreamdaemon", "$file_path/${file_base_name}.dmb"]
+		}
+	]
 }
