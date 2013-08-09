@@ -1,4 +1,5 @@
 {
-	"cmd": ["dm.exe", "$file"],
-	"selector": "source.dm"
+	"cmd": ["dm", "$file"],
+	"selector": "source.dm",
+	"file_regex": "^(..[^:]*):([0-9]+):()(error:.+)$"
 }
