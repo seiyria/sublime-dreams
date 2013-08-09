@@ -7,7 +7,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Monokai Bright</string>
+	<string>Dark Dreams</string>
 	<key>settings</key>
 	<array>
 		<dict>
@@ -160,12 +160,38 @@
 				<string>#e694ef</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comments</string>
+			<key>scope</key>
+			<string>comment</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#606060</string>
+				<key>fontStyle</key>
+				<string> bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Functions</string>
+			<key>scope</key>
+			<string>meta.function</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#a5a831</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>D8D5E82E-3D5B-46B5-B38E-8C841C21347E</string>
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>semanticClass</key>
-	<string>theme.dark.monokai_bright</string>
+	<string>theme.dark.dark_dreams</string>
+	<key>author</key>
+	<string>seiyria</string>
 </dict>
 </plist>
