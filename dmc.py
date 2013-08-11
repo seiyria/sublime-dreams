@@ -18,8 +18,6 @@ class DmcCommand(sublime_plugin.WindowCommand):
 
 		dme_path = self.find_closest_dme(file)
 
-		print dirname(dme_path)
-
 		new_cmd = [ environment_path + "dm.exe" , dme_path ]
 		args = {
 			'cmd': new_cmd,
