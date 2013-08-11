@@ -37,7 +37,7 @@
             "name": "storage.modifier.dm"
         }, 
         {
-            "match": "\\b(usr|world|src)\\b", 
+            "match": "\\b(usr|world|src|datum|atom(/movable)?|obj|mob|turf|area|savefile|list)\\b", 
             "name": "variable.language.dm"
         }, 
         {
@@ -145,7 +145,7 @@
             "include": "#pragma-mark"
         }, 
         {
-            "begin": "^\\s*#\\s*(define|defined|elif|else|if|ifdef|ifndef|line|pragma|undef)\\b", 
+            "begin": "^\\s*#\\s*(define|defined|elif|else|if|ifdef|ifndef|line|pragma|include|undef)\\b", 
             "captures": {
                 "1": {
                     "name": "keyword.control.import.dm"
