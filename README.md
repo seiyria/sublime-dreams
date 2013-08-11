@@ -23,7 +23,7 @@ We provide two themes: Dark Dreams and Light Dreams. Light Dreams is what a DM p
 
 Build System
 ============
-A build system is included that, at the moment, compiles the currently opened .dm file into a .dmb. It also supports running the .dmb in Dream Seeker, or opening it in Dream Daemon so you can run it from there. It does not support compiling an entire environment yet.
+The build system currently only has the option to build an individual file or an environment. It searches for an environment by checking each parent folder recursively until it finds a .dme file. If it does not find one, it will only compile the current file. If multiple environments are found in the same folder, the first one will be chosen.
 
 Snippet Autocompletion
 ======================
