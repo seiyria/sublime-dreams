@@ -15,8 +15,11 @@ Currently correctly highlighting:
 * Language constants
 * Embedded expressions
 * Operators (most themes ignore these)
+* DMF files
 
-The theme that works best (according to the few I tried) is Sunburst.
+Themes
+======
+We provide two themes: Dark Dreams and Light Dreams. Light Dreams is what a DM programmer is most familiar with - it's the exact same color scheme. Dark Dreams is a dark theme that matches DMs specific syntax, except in a dark theme.
 
 Build System
 ============
