@@ -9,7 +9,7 @@ path = {
 
 class DmcCommand(sublime_plugin.WindowCommand):
 
-	def run(self, cmd = [], file_regex = "", dream_seeker = False, dream_daemon = False):
+	def run(self, cmd = [], file_regex = "", kill_old = False, dream_seeker = False, dream_daemon = False):
 		dmpath = path[sublime.arch()]
 
 		dme_dir = self.build(dmpath, cmd[0], file_regex)
