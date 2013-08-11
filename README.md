@@ -17,13 +17,19 @@ Currently correctly highlighting:
 * Operators (most themes ignore these)
 * DMF files
 
+Autocompletion
+==============
+Currently there is an autocompletion entry for every variable that I could glean out of the reference. Procs will eventually be added.
+
 Themes
 ======
 We provide two themes: Dark Dreams and Light Dreams. Light Dreams is what a DM programmer is most familiar with - it's the exact same color scheme. Dark Dreams is a dark theme that matches DMs specific syntax, except in a dark theme.
 
 Build System
 ============
-The build system currently only has the option to build an individual file or an environment. It searches for an environment by checking each parent folder recursively until it finds a .dme file. If it does not find one, it will only compile the current file. If multiple environments are found in the same folder, the first one will be chosen.
+The build system currently only has the option to build an individual file or an environment. It searches for an environment by checking each parent folder recursively until it finds a .dme file. If it does not find one, it will only compile the current file. If multiple environments are found in the same folder, the first one will be chosen. 
+
+There are options to launch the environment in Dream Seeker or Dream Daemon.
 
 Snippet Autocompletion
 ======================
@@ -86,4 +92,4 @@ Potential Future Features
 *  Auto-reboot DreamDaemon on build
 *  Auto-join DreamDaemon as self
 *  Auto-join DreamDaemon with x keys/guests
-*  DMF syntax highlighting
+*  Update DME with new file entries
