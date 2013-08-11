@@ -1,8 +1,0 @@
-[
-	{
-		"keys": ["ctrl+r"], "command": "exec", "args": { "cmd": "dreamseeker.exe"}
-	},
-	{
-		"keys": ["ctrl+,"], "command": "get_dm_system_data"
-	}
-]

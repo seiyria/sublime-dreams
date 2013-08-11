@@ -1,7 +1,8 @@
 {
-	"cmd": ["dm", "$file"],
-	"selector": "source.dm",
+	"cmd": ["$file"],
 	"file_regex": "^(..[^:]*):([0-9]+):()(error:.+)$",
+	"selector": "source.dm",
+	"target": "dmc",
 
 	"variants": [
 		{
