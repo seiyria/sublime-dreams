@@ -37,7 +37,7 @@
             "name": "storage.modifier.dm"
         }, 
         {
-            "match": "\\b(usr|world|src|datum|atom(/movable)?|obj|mob|turf|area|savefile|list)\\b", 
+            "match": "\\b(usr|world|src|datum|atom(/movable)?|obj|mob|turf|area|savefile|list|client|sound|image)\\b", 
             "name": "variable.language.dm"
         }, 
         {

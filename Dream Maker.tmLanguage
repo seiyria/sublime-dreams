@@ -62,7 +62,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(usr|world|src|datum|atom(/movable)?|obj|mob|turf|area|savefile|list)\b</string>
+			<string>\b(usr|world|src|datum|atom(/movable)?|obj|mob|turf|area|savefile|list|client|sound|image)\b</string>
 			<key>name</key>
 			<string>variable.language.dm</string>
 		</dict>
