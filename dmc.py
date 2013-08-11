@@ -17,7 +17,11 @@ class DmcCommand(sublime_plugin.WindowCommand):
 	def build(self, environment_path, file, file_regex):
 
 		new_cmd = [ environment_path + "dm.exe" , self.find_closest_dme(file) ]
-		sublime.active_window().run_command('exec', cmd = new_cmd, file_regex = file_regex)
+		args = {
+			'cmd': new_cmd,
+			'file_regex': file_regex
+		}
+		sublime.active_window().run_command("exec", args)
 
 	def find_closest_dme(self, compile_file):
 		current_dir = compile_file
