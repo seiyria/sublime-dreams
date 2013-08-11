@@ -4,6 +4,7 @@
 		-leftmost expressions (like /datum) that aren't already a keyword
 		-parameter highlighting
 		-support world/New as well as world/\n\tNew()
+		-step should only be higlight in a for() loop header
 */
 
 // this is a test file to make sure the DM syntax is correctly highlighted
