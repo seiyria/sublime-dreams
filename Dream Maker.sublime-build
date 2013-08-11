@@ -1,6 +1,6 @@
 {
 	"cmd": ["$file"],
-	"file_regex": "^(..[^:]*):([0-9]+):()(error:.+)$",
+	"file_regex": "^(..[^:]*):([0-9]+):()((warning|error):.+)$",
 	"selector": "source.dm",
 	"target": "dmc",
 
