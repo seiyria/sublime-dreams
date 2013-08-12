@@ -82,8 +82,6 @@ Got useful snippets? Send a pull request!
 Potential Future Features
 =========================
 *  Kill old DreamSeeker before compilation, and run a new DreamSeeker
-*  Auto-run in DreamDaemon hotkey
 *  Auto-reboot DreamDaemon on build
 *  Auto-join DreamDaemon as self
 *  Auto-join DreamDaemon with x keys/guests
-*  DMF syntax highlighting
