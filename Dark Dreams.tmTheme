@@ -129,7 +129,7 @@
 			<key>name</key>
 			<string>Enclosing Markers</string>
 			<key>scope</key>
-			<string>meta.parens, meta.block</string>
+			<string>meta.parens</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
