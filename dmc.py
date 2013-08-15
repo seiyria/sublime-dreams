@@ -35,12 +35,14 @@ class DmcCommand(sublime_plugin.WindowCommand, ProcessListener):
 
 		self.setup_sublime(file_regex, line_regex, dme_dir, encoding)
 
+		# kill it to prevent RSC bullshit
+		if self.dream_seeker and kill_old:
+			self.dream_seeker.kill()
+
 		self.build(dmpath, dme_file)
 		dmb_dir = self.find_dmb(dme_dir)
 
 		if dream_seeker:
-			if self.dream_seeker and kill_old:
-				self.dream_seeker.kill()
 			self.run_in_seeker(dmpath, dmb_dir)
 
 		if dream_daemon:
