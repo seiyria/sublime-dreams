@@ -29,7 +29,7 @@ Build System
 ============
 The build system currently only has the option to build an individual file or an environment. It searches for an environment by checking each parent folder recursively until it finds a .dme file. If it does not find one, it will only compile the current file. If multiple environments are found in the same folder, the first one will be chosen. 
 
-There are options to launch the environment in Dream Seeker or Dream Daemon.
+There are options to launch the environment in Dream Seeker or Dream Daemon. By default, **running a new Dream Seeker instance will kill a previous one**. This helps prevent RSC locking and makes testing a bit easier.
 
 Snippet Autocompletion
 ======================
@@ -87,7 +87,6 @@ Got useful snippets? Send a pull request!
 
 Potential Future Features
 =========================
-*  Kill old DreamSeeker before compilation, and run a new DreamSeeker
 *  Auto-reboot DreamDaemon on build
 *  Auto-join DreamDaemon as self
 *  Auto-join DreamDaemon with x keys/guests
