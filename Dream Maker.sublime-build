@@ -11,6 +11,10 @@
 			"kill_old": true
 		},
 		{
+			"name": "Run in New DreamSeeker",
+			"dream_seeker": true
+		},
+		{
 			"name": "Run in DreamDaemon",
 			"dream_daemon": true
 		}
