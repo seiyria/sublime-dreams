@@ -17,7 +17,11 @@ class DmcCommand(sublime_plugin.WindowCommand, ProcessListener):
 
 	dream_daemon = None
 	dream_seeker = None
-	dream_maker  = None
+
+	#DreamMaker
+	proc 	     = None
+
+	quiet 		 = False
 
 	def run(self, cmd = [], file_regex = "", line_regex = "",
             encoding = "utf-8", env = {}, quiet = False, kill_old = False,
@@ -26,45 +30,25 @@ class DmcCommand(sublime_plugin.WindowCommand, ProcessListener):
 		file = cmd[0]
 		dmpath = path[sublime.arch()]
 
-		dme_dir = dirname(self.find_closest_dme(file))
+		dme_file = self.find_closest_dme(file)
+		dme_dir = dirname(dme_file)
 
 		self.setup_sublime(file_regex, line_regex, dme_dir, encoding)
 
-		sublime.status_message("Building DMB...")
-
-		self.build(dmpath, dme_dir)
+		self.build(dmpath, dme_file)
 		dmb_dir = self.find_dmb(dme_dir)
 
 		if dream_seeker:
+			if self.dream_seeker and kill_old:
+				self.dream_seeker.kill()
 			self.run_in_seeker(dmpath, dmb_dir)
 
 		if dream_daemon:
 			self.run_in_daemon(dmpath, dmb_dir)
 
-	def setup_sublime(self, file_regex, line_regex, working_dir, encoding):
-		if not hasattr(self, 'output_view'):
-		    self.output_view = self.window.get_output_panel("exec")
-
-		if (working_dir == "" and self.window.active_view()
-		                and self.window.active_view().file_name()):
-		    working_dir = os.path.dirname(self.window.active_view().file_name())
-
-		self.output_view.settings().set("result_file_regex", file_regex)
-		self.output_view.settings().set("result_line_regex", line_regex)
-		self.output_view.settings().set("result_base_dir", working_dir)
-
-		self.window.get_output_panel("exec")
-
-		self.encoding = encoding
-
-		show_panel_on_build = sublime.load_settings("Preferences.sublime-settings").get("show_panel_on_build", True)
-		if show_panel_on_build:
-		    self.window.run_command("show_panel", {"panel": "output.exec"})
-
-		if working_dir != "":
-		    os.chdir(working_dir)
-
 	def run_cmd(self, cmd, is_daemon = False, is_seeker = False, is_maker = False, **kwargs):
+
+		self.proc = None
 
 		merged_env = {}
 		if self.window.active_view():
@@ -77,9 +61,18 @@ class DmcCommand(sublime_plugin.WindowCommand, ProcessListener):
 		    err_type = WindowsError
 
 		try:
-			sublime.status_message("Doing a thing...")
+			# I have a large dislike of writing it this way
 			if is_maker:
-				self.dream_maker = AsyncProcess(cmd, merged_env, self, **kwargs)
+				sublime.status_message("Building DMB...")
+				self.proc = AsyncProcess(cmd, merged_env, self, **kwargs)
+
+			if is_seeker:					
+				sublime.status_message("Running in DreamSeeker...")
+				self.dream_seeker = AsyncProcess(cmd, merged_env, self, **kwargs)
+
+			if is_daemon:					
+				sublime.status_message("Running in DreamDaemon...")
+				self.dream_daemon = AsyncProcess(cmd, merged_env, self, **kwargs)
 
 		except err_type as e:
 		    self.append_data(None, str(e) + "\n")
@@ -92,33 +85,21 @@ class DmcCommand(sublime_plugin.WindowCommand, ProcessListener):
 		    if not self.quiet:
 		        self.append_data(None, "[Finished]")
 
-		    sublime.status_message("Failed doing a thing")
+#build runners
 
 	def build(self, environment_path, dme_path):
-
-		cmd = [ environment_path + "dm.exe" , dme_path ]
-		'''
-		args = {
-			'cmd': new_cmd,
-			'file_regex': file_regex,
-			'working_dir': dirname(dme_path)
-		}
-		'''
+		cmd = [ environment_path + "dm" , dme_path ]
 		self.run_cmd(cmd, is_maker = True)
-		#sublime.active_window().run_command("exec", args)
 
-	def find_dmb(self, current_dir):
-		#sublime.status_message("Finding closest DMB")
+	def run_in_seeker(self, environment_path, dmb = ''):
+		cmd = [ environment_path + "dreamseeker" , dmb ]
+		self.run_cmd(cmd, is_seeker = True)
 
-		#TODO match the current directory name/dme name
-		dmb_list = [ 
-			current_dir+"\\"+f.encode('ascii', 'ignore') 
-				for f in os.listdir(current_dir) 
-					if isfile(join(current_dir, f)) and splitext(f)[1] == u".dmb" 
-			]
+	def run_in_daemon(self, environment_path, dmb):
+		cmd = [ environment_path + "dreamdaemon" , dmb , "-trusted" ]
+		self.run_cmd(cmd, is_daemon = True)
 
-		if len(dmb_list) is not 0:
-			return dmb_list[0]
+#file finders
 
 	def find_closest_dme(self, compile_file):
 		sublime.status_message("Finding closest DME...")
@@ -143,21 +124,113 @@ class DmcCommand(sublime_plugin.WindowCommand, ProcessListener):
 
 		return dme.encode('ascii', 'ignore') 
 
+
+	def find_dmb(self, current_dir):
+		#TODO match the current directory name/dme name
+		dmb_list = [ 
+			current_dir+"\\"+f.encode('ascii', 'ignore') 
+				for f in os.listdir(current_dir) 
+					if isfile(join(current_dir, f)) and splitext(f)[1] == u".dmb" 
+			]
+
+		if len(dmb_list) is not 0:
+			return dmb_list[0]
+
+#get the drive root
+
 	def drive_root(self, path):
 		return splitdrive(path)[0]+"\\"
 
-	def run_in_seeker(self, environment_path, dmb = ''):
-		sublime.status_message("Running "+dmb+"in DreamSeeker...")
-		new_cmd = [ environment_path + "dreamseeker.exe" , dmb ]
-		args = {
-			'cmd': new_cmd
-		}
-		sublime.active_window().run_command("exec", args)
+#sublime configuration
 
-	def run_in_daemon(self, environment_path, dmb):
-		sublime.status_message("Running in Dream Daemon")
-		new_cmd = [ environment_path + "dreamdaemon.exe" , dmb , "-trusted" ]
-		args = {
-			'cmd': new_cmd
-		}
-		sublime.active_window().run_command("exec", args)
+	def setup_sublime(self, file_regex, line_regex, working_dir, encoding):
+		if not hasattr(self, 'output_view'):
+		    self.output_view = self.window.get_output_panel("exec")
+
+		if (working_dir == "" and self.window.active_view()
+		                and self.window.active_view().file_name()):
+		    working_dir = os.path.dirname(self.window.active_view().file_name())
+
+		self.output_view.settings().set("result_file_regex", file_regex)
+		self.output_view.settings().set("result_line_regex", line_regex)
+		self.output_view.settings().set("result_base_dir", working_dir)
+
+		self.window.get_output_panel("exec")
+
+		self.encoding = encoding
+
+		show_panel_on_build = sublime.load_settings("Preferences.sublime-settings").get("show_panel_on_build", True)
+		if show_panel_on_build:
+		    self.window.run_command("show_panel", {"panel": "output.exec"})
+
+		if working_dir != "":
+		    os.chdir(working_dir)
+
+# from exec.py verbatim
+
+	def is_enabled(self, kill = False):
+		if kill:
+			return hasattr(self, 'proc') and self.proc and self.proc.poll()
+		else:
+			return True
+
+	def append_data(self, proc, data):
+		if proc != self.proc:
+			# a second call to exec has been made before the first one
+			# finished, ignore it instead of intermingling the output.
+			if proc:
+				proc.kill()
+			return
+
+		try:
+			str = data.decode(self.encoding)
+		except:
+			str = "[Decode error - output not " + self.encoding + "]\n"
+			proc = None
+
+		# Normalize newlines, Sublime Text always uses a single \n separator
+		# in memory.
+		str = str.replace('\r\n', '\n').replace('\r', '\n')
+
+		selection_was_at_end = (len(self.output_view.sel()) == 1
+			and self.output_view.sel()[0]
+			== sublime.Region(self.output_view.size()))
+
+		self.output_view.set_read_only(False)
+		edit = self.output_view.begin_edit()
+		self.output_view.insert(edit, self.output_view.size(), str)
+
+		if selection_was_at_end:
+			self.output_view.show(self.output_view.size())
+			self.output_view.end_edit(edit)
+			self.output_view.set_read_only(True)
+
+	def finish(self, proc):
+		if not self.quiet:
+			elapsed = time.time() - proc.start_time
+			exit_code = proc.exit_code()
+			if exit_code == 0 or exit_code == None:
+				self.append_data(proc, ("[Finished in %.1fs]") % (elapsed))
+			else:
+				self.append_data(proc, ("[Finished in %.1fs with exit code %d]") % (elapsed, exit_code))
+
+		if proc != self.proc:
+			return
+
+		errs = self.output_view.find_all_results()
+		if len(errs) == 0:
+			sublime.status_message("Build finished")
+		else:
+			sublime.status_message(("Build finished with %d errors") % len(errs))
+
+		# Set the selection to the start, so that next_result will work as expected
+		edit = self.output_view.begin_edit()
+		self.output_view.sel().clear()
+		self.output_view.sel().add(sublime.Region(0))
+		self.output_view.end_edit(edit)
+
+	def on_data(self, proc, data):
+		sublime.set_timeout(functools.partial(self.append_data, proc, data), 0)
+
+	def on_finished(self, proc):
+		sublime.set_timeout(functools.partial(self.finish, proc), 0)
