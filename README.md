@@ -19,7 +19,7 @@ Currently correctly highlighting:
 
 Autocompletion
 ==============
-Currently there is an autocompletion entry for every variable that I could glean out of the reference. Procs will eventually be added.
+Currently there is an autocompletion entry for every variable that I could glean out of the reference. I have also added this feature for procs. They can be tabbed through much like the snippets below.
 
 Themes
 ======
