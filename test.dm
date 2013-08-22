@@ -212,3 +212,43 @@ proc
 */
 	world << "poop: \[x]" // only first bracket cancels the expression
 	world << "poop \"hi\" " //both quotes have to be escaped
+	
+/*
+	. and : as path operators (are you doing path hilighting anyways?)
+*/
+mob:.:.:.:.:.:.:.:.:.:.Login()
+	world << "Hello, world!"
+	..()
+	.poop
+mob.poop.verb.hi()
+	world << "hi"
+
+//stolen from the DM Guide
+mob/cock.verb:fdf()
+	world << "hi"
+mob:cock
+	verb/stupid()
+		world << "hi" 
+mob
+	var/species_alignment
+	dragon
+		species_alignment = .dragon
+		black
+			species_alignment = .black
+	snake
+		species_alignment = .snake
+		cobra
+		winged
+			species_alignment = .dragon
+		pit_viper
+			species_alignment = .dragon/black
+     
+obj/corpse
+   icon = 'corpse.dmi'
+
+mob
+   dragon
+      icon = 'dragon.dmi'
+
+      :corpse  //add to corpse definition
+         var/dragon_meat
