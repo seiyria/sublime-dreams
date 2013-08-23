@@ -1,0 +1,119 @@
+{
+	"name": "Dream Maker Mk2",
+	"scopeName": "source.dm2",
+	"fileTypes": ["dm"],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+                    "begin": "/\\*", 
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.dm"
+                        }
+                    }, 
+                    "end": "\\*/", 
+                    "name": "comment.block.dm"
+                },
+                {
+                    "begin": "//", 
+                    "beginCaptures": {
+                        "0": {
+                            "name": "punctuation.definition.comment.dm"
+                        }
+                    }, 
+                    "end": "$\\n?", 
+                    "name": "comment.line.double-slash.dm", 
+                    "patterns": [
+                        {
+                            "match": "(?>\\\\\\s*\\n)", 
+                            "name": "punctuation.separator.continuation.dm"
+                        }
+                    ]
+                }
+			]
+		},
+		"type_definition": {
+			"patterns": [
+				{ "include": "#comments" },
+				{
+					"contentName": "meta.typerange.dm2",
+					"begin": "^(\\s*?)([A-Za-z\\\\]+)",
+					"beginCaptures": {
+					    "2": { "name": "meta.type.dm2" }
+					},
+					"end": "^(?!\\1\\s)",
+					"patterns": [
+						{ "include": "#proc_definitions" },
+						{ "include": "#proc_definition" },
+						{ "include": "#var_definitions" },
+						{ "include": "#type_definition" }
+					]
+				}
+			]
+		},
+		"var_definitions": {
+			"patterns": [
+				{ "include": "#comments" },
+				{
+					"contentName": "meta.varsrange.dm2",
+					"begin": "^(\\s*?)(var)",
+					"beginCaptures": {
+					    "1": { "name": "meta.indent.dm2" },
+					    "2": { "name": "keyword.storage.dm2" }
+					},
+					"end": "^(?!\\1\\s)",
+					"endCaptures": {
+						"0": { "name": "meta.hurr.durr.dm2" }
+					},
+					"patterns": [
+					]
+				}
+			]
+		},
+		"proc_definitions": {
+			"patterns": [
+				{ "include": "#comments" },
+				{
+					"contentName": "meta.procsrange.dm2",
+					"begin": "^(\\s*?)(proc)",
+					"beginCaptures": {
+					    "1": { "name": "meta.indent.dm2" },
+					    "2": { "name": "keyword.storage.dm2" }
+					},
+					"end": "^(?!\\1\\s)",
+					"patterns": [
+						{ "include": "#proc_definition" }
+					]
+				}
+			]
+		},
+		"proc_definition": {
+			"patterns": [
+				{ "include": "#comments" },
+				{
+					"contentName": "meta.function_definition.dm2",
+					"begin": "^(\\s*?)([A-Za-z]+)\\(.*\\)$",
+					"beginCaptures": {
+					    "1": { "name": "meta.indent.dm2" },
+					    "2": { "name": "meta.function.dm2 entity.name.function.dm2" }
+					},
+					"end": "^(?!\\1\\s)",
+					"patterns": [
+						{ "include": "#block" }
+					]
+				}
+			]
+		},
+		"block": {
+			"patterns": [
+				{ "include": "#comments" }
+			]
+		}
+	},
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#type_definition" }
+	],
+	"uuid": "1db75b2a-de90-4bc7-8290-034ae7439453"
+}
