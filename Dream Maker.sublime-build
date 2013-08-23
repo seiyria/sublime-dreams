@@ -1,17 +1,22 @@
 {
 	"cmd": ["$file"],
-	"file_regex": "^(..[^:]*):([0-9]+):()(error:.+)$",
+	"file_regex": "^(..[^:]*):([0-9]+):()((warning|error):.+)$",
 	"selector": "source.dm",
 	"target": "dmc",
 
 	"variants": [
 		{
 			"name": "Run",
-			"cmd": ["dreamseeker", "$file_path/${file_base_name}.dmb"]
+			"dream_seeker": true,
+			"kill_old": true
 		},
 		{
-			"name": "Run in Dream Daemon",
-			"cmd": ["dreamdaemon", "$file_path/${file_base_name}.dmb"]
+			"name": "Run in New DreamSeeker",
+			"dream_seeker": true
+		},
+		{
+			"name": "Run in DreamDaemon",
+			"dream_daemon": true
 		}
 	]
 }

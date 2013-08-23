@@ -4,6 +4,8 @@
 		-leftmost expressions (like /datum) that aren't already a keyword
 		-parameter highlighting
 		-support world/New as well as world/\n\tNew()
+		-step should only be higlight in a for() loop header
+		-add procs to autocomplete
 */
 
 // this is a test file to make sure the DM syntax is correctly highlighted
@@ -39,7 +41,7 @@
 */
 var
 	global
-		x = 500  
+		x = 500
 	const
 		y = "test string"
 
@@ -60,8 +62,8 @@ datum
 		//t = 0xBEEFFACE
 		u = 01000
 		y = x ? z : POOP
-		//z = x > 2 : 1 < 4 
-		test = new list() 
+		//z = x > 2 : 1 < 4
+		test = new list()
 		obj/cake/pie = new()
 
 	proc
@@ -86,7 +88,7 @@ proc
 		sleep(20);
 /*
 	do/while loop in braces
-*/		
+*/
 		var count = 1
 		for (var i = 0; i < count; ++i)
 			world << 1
@@ -195,14 +197,14 @@ proc
         world << {"poop
         	poop
         	poop"}
-/*	
+/*
 	escaped line end
 */
 	world << "poop \
 		poop"
-	
+
 /*
-	embedded expressions 
+	embedded expressions
 */
 	world << "poop: [x]"
 /*
@@ -210,3 +212,43 @@ proc
 */
 	world << "poop: \[x]" // only first bracket cancels the expression
 	world << "poop \"hi\" " //both quotes have to be escaped
+	
+/*
+	. and : as path operators (are you doing path hilighting anyways?)
+*/
+mob:.:.:.:.:.:.:.:.:.:.Login()
+	world << "Hello, world!"
+	..()
+	.poop
+mob.poop.verb.hi()
+	world << "hi"
+
+//stolen from the DM Guide
+mob/cock.verb:fdf()
+	world << "hi"
+mob:cock
+	verb/stupid()
+		world << "hi" 
+mob
+	var/species_alignment
+	dragon
+		species_alignment = .dragon
+		black
+			species_alignment = .black
+	snake
+		species_alignment = .snake
+		cobra
+		winged
+			species_alignment = .dragon
+		pit_viper
+			species_alignment = .dragon/black
+     
+obj/corpse
+   icon = 'corpse.dmi'
+
+mob
+   dragon
+      icon = 'dragon.dmi'
+
+      :corpse  //add to corpse definition
+         var/dragon_meat
