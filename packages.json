@@ -10,7 +10,7 @@
 			"platforms": {
 				"*": [
 					{
-						"version": "1.4.3",
+						"version": "1.5.3",
 						"url": "https://codeload.github.com/seiyria/sublime-dreams/zip/master"
 					}
 				]
