@@ -147,7 +147,7 @@
 		{ "trigger": "ImportText", "contents": "ImportText(${1:path=cd},${2:source})" },
 		{ "trigger": "Insert", "contents": "Insert(${1:Index},${2:Item1},${3:Item2...})" },
 		{ "trigger": "Insert", "contents": "Insert(${1:new_icon},${2:icon_state},${3:dir},${4:frame},${5:moving},${6:delay})" },
-		{ "trigger": "Interpolate", "contents": "Interpolate()" },
+		{ "trigger": "Interpolate", "contents": "Interpolate(${1:matrix},${2:time})" },
 		{ "trigger": "Invert", "contents": "Invert()" },
 		{ "trigger": "IsBanned", "contents": "IsBanned(${1:key},${2:address},${3:computer_id})" },
 		{ "trigger": "IsByondMember", "contents": "IsByondMember()" },
